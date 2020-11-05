@@ -20,6 +20,7 @@ export function App() {
 
 
   const addThought = (thought) => {
+    console.log(thought, 'newly generated thought')
     setThoughts((prevThoughts) => [thought, ...prevThoughts])
   }
 

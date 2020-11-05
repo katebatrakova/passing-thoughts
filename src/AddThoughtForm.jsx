@@ -9,9 +9,24 @@ export function AddThoughtForm(props) {
   }
 
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    //creating a new thought object to be passes into App's addThought func
+    const newThought = {
+      id: generateId(),
+      text: text,
+      expiresAt: getNewExpirationTime()
+    }
+
+    props.addThought(newThought)
+  }
+
+
+
+
 
   return (
-    <form className="AddThoughtForm">
+    <form className="AddThoughtForm" onSubmit={handleSubmit}>
       <input
         value={text}
         onChange={handleChange}
