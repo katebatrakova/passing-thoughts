@@ -12,7 +12,7 @@ export function AddThoughtForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (text.length > 1) {
+    if (text.length > 0) {
       //creating a new thought object to be passes into App's addThought func
       const newThought = {
         id: generateId(),
