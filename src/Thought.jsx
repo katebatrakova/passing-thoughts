@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export function Thought(props) {
   const { thought, removeThought } = props;
 
   const handleRemoveClick = () => {
-    removeThought(thought.id);
+    props.removeThought(thought.id);
   };
+
+  useEffect(() => {
+
+    const remainingTime = thought.expiresAt - Date.now();
+
+    const timeOut = setTimeout(() => {
+      removeThought(thought.id)
+    }, remainingTime)
+
+    return () => {
+      clearTimeout(timeOut)
+    }
+  }, [thought])
 
   return (
     <li className="Thought">
@@ -16,7 +29,7 @@ export function Thought(props) {
       >
         &times;
       </button>
-      <div className="text">{thought.text}</div>
+      <div className="text">{props.thought.text}</div>
     </li>
   );
 }
