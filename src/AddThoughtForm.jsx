@@ -6,6 +6,7 @@ export function AddThoughtForm(props) {
 
   const handleChange = (event) => {
     setText(event.target.value)
+
   }
 
 
@@ -19,6 +20,8 @@ export function AddThoughtForm(props) {
     }
 
     props.addThought(newThought)
+    setText("")
+
   }
 
 
