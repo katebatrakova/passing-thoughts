@@ -12,14 +12,16 @@ export function AddThoughtForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    //creating a new thought object to be passes into App's addThought func
-    const newThought = {
-      id: generateId(),
-      text: text,
-      expiresAt: getNewExpirationTime()
-    }
+    if (text.length > 1) {
+      //creating a new thought object to be passes into App's addThought func
+      const newThought = {
+        id: generateId(),
+        text: text,
+        expiresAt: getNewExpirationTime()
+      }
 
-    props.addThought(newThought)
+      props.addThought(newThought)
+    }
     setText("")
 
   }
